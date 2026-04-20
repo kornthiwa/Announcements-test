@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Announcements {
+  id         Int      @id @default(autoincrement())
+  title      String   @db.VarChar(255)
+  body       String   @db.Text
+  author     String   @db.VarChar(120)
+  pinned     Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @updatedAt @db.Timestamptz(6)
+}

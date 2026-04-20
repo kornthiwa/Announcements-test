@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: product-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: product_db
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d product_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: product-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/product_db?schema=public
+    ports:
+      - "3001:3001"
+
+  frontend:
+    build:
+      context: ./my-app
+      dockerfile: Dockerfile
+    container_name: product-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      PORT: 3000
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres-data:

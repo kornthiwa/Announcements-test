@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.appContent {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}

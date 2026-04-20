@@ -1,0 +1,136 @@
+.tableContainer {
+  overflow-x: auto;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #374151;
+  background: #0f172a;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #374151;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.table tbody tr:hover {
+  background-color: #111827;
+}
+
+.pinnedRow {
+  background: #0f172a;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pinnedBadge,
+.normalBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pinnedBadge {
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+
+.normalBadge {
+  color: #cbd5e1;
+  background: rgba(51, 65, 85, 0.35);
+  border: 1px solid rgba(71, 85, 105, 0.7);
+}
+
+.actionButton {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #4b5563;
+  border-radius: 0.375rem;
+  background-color: #374151;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.actionButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 200;
+}
+
+.modal {
+  width: min(100%, 34rem);
+  padding: 1rem;
+  border: 1px solid #4b5563;
+  border-radius: 0.5rem;
+  background: #111827;
+  color: #ffffff;
+}
+
+.modalTitle {
+  margin: 0 0 1rem;
+}
+
+.formField {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #4b5563;
+  border-radius: 0.375rem;
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.checkboxField {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
